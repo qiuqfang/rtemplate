@@ -9,10 +9,9 @@
     "build:test": "cross-env MODE=test webpack --config config/webpack.prod.js",
     "build:prod": "cross-env MODE=prod webpack --config config/webpack.prod.js",
     "type-check": "tsc",
-    "lint:prettier": "prettier --write .",
+    "lint:format": "prettier --write .",
     "lint:eslint": "eslint . --fix",
-    "lint:stylelint": "stylelint --fix 'src/**/*.{css,less,scss,sass,styl}'",
-    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:stylelint",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
     "commit": "cz",
     "prepare": "husky install"
   },
@@ -78,9 +77,6 @@
     "sharp": "^0.31.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.0.0",
-    "stylelint": "^15.0.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^31.0.0",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.0.0",
     "swc-loader": "^0.2.3",
@@ -96,12 +92,9 @@
   "private": true,
   "repository": "https://github.com/qiuqfang/rtemplate.git",
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "src/**/*.{css,less,scss,sass,styl}": [
-      "prettier --write",
-      "stylelint --fix"
+    "src/**/*.{js,jsx,ts,tsx,css,less,scss,sass,styl}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "config": {
