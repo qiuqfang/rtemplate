@@ -10,9 +10,9 @@
 
 ## 特性
 
-- 🔗 [React Router](https://reactrouter.com)
+- 🔗 [React Router](https://reactrouter.com) - 路由管理
 
-- 🐻 [使用 zustand 的状态管理](https://zustand-demo.pmnd.rs/)
+- 🐻 [zustand](https://zustand-demo.pmnd.rs/) - 状态管理
 
 - 🎨 [TailwindCSS](https://tailwindcss.com/) - 高性能且极具灵活性的即时原子化 CSS 引擎
 
