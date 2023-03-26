@@ -1,8 +1,8 @@
 import i18n, { init, use } from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import en from "../public/locales/en";
-import zh from "../public/locales/zh";
+import en from "./en";
+import zh from "./zh";
 
 const resources = {
   en: {
@@ -21,7 +21,7 @@ use(initReactI18next);
 
 init({
   resources,
-  lng: "zh",
+  lng: localStorage.lang ?? "zh",
   interpolation: {
     escapeValue: false,
   },

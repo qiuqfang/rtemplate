@@ -1,3 +1,4 @@
+import i18n from "@/locales/i18n";
 import { RouteType, RouteInfoValueType, routeInfos } from "@/router";
 import { MenuRouteItemType } from "./types";
 
@@ -17,8 +18,8 @@ export const recursionAsyncMenu = (routes: RouteType[]): MenuRouteItemType[] => 
       if (!routeInfo.hidden) {
         accessMenu.path = route.path;
         accessMenu.key = route.path;
-        accessMenu.label = routeInfo.title;
-        accessMenu.title = routeInfo.title;
+        accessMenu.label = i18n.t(`menu.${route.path}`, { defaultValue: routeInfo.title });
+        accessMenu.title = i18n.t(`menu.${route.path}`, { defaultValue: routeInfo.title });
         if (accessMenu.children?.length === 0) delete accessMenu.children;
         accessMenus.push(accessMenu);
       }

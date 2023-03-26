@@ -2,14 +2,13 @@ import Logo from "@/components/logo";
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { Icon } from "@iconify/react";
-import { Button, Dropdown } from "antd";
-import type { MenuProps } from "antd";
-import { changeLanguage } from "i18next";
+import { Button } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import "./index.less";
+import Translation from "@/components/Translation";
 
 function NavBar() {
   const { switchDisplaySidebar } = useAppStore();
@@ -26,27 +25,6 @@ function NavBar() {
     removeToken();
     navigate("/login");
   };
-
-  const handleChangeLanguage = (language: string) => {
-    changeLanguage(language);
-  };
-
-  const languageMenuItems: MenuProps["items"] = [
-    {
-      key: "1",
-      label: "中文",
-      onClick: () => {
-        handleChangeLanguage("zh");
-      },
-    },
-    {
-      key: "2",
-      label: "English",
-      onClick: () => {
-        handleChangeLanguage("en");
-      },
-    },
-  ];
 
   const toggleMode = () => {
     const theme = isDark ? "" : "dark";
@@ -69,14 +47,12 @@ function NavBar() {
             <Icon icon="material-symbols:dark-mode" />
           )}
         </div>
-        <Dropdown menu={{ items: languageMenuItems }}>
-          <div className="language flex h-full items-center justify-center">
-            <Icon icon="material-symbols:language" />
-          </div>
-        </Dropdown>
-        <Button type="text" className="dark:text-neutral-50" onClick={handleLogout}>
-          {t("common.logout_text")}
-        </Button>
+        <Translation />
+        <div className="flex w-[150px] items-center justify-center">
+          <Button type="text" className="dark:text-neutral-50" onClick={handleLogout}>
+            {t("common.logout")}
+          </Button>
+        </div>
       </div>
       <Icon
         icon="material-symbols:menu-rounded"

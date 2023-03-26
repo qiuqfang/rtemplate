@@ -37,16 +37,22 @@ function Login() {
       <Logo imgSrc="https://www.qiuqfang.top/favicon.svg" />
 
       <Form name="login" form={loginForm} initialValues={{ remember: true }} autoComplete="off">
-        <Form.Item name="username" rules={[{ required: true, message: "请输入用户名" }]}>
-          <Input placeholder="请输入用户名" />
+        <Form.Item
+          name="username"
+          rules={[{ required: true, message: t("login.usernamePlaceholder") as string }]}
+        >
+          <Input placeholder={t("login.usernamePlaceholder") as string} />
         </Form.Item>
 
-        <Form.Item name="password" rules={[{ required: true, message: "请输入密码" }]}>
-          <Input.Password placeholder="请输入密码" />
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: t("login.usernamePlaceholder") as string }]}
+        >
+          <Input.Password placeholder={t("login.passwordPlaceholder") as string} />
         </Form.Item>
       </Form>
       <Button type="primary" onClick={handleLogin}>
-        {t("login.login_btn_text")}
+        {t("common.login")}
       </Button>
     </div>
   );

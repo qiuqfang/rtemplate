@@ -2,5 +2,6 @@
   "title": "欢迎使用多语言",
   "change_language_btn_en": "英文",
   "change_language_btn_zh": "中文",
-  "logout_text": "退出登录"
+  "login": "登录",
+  "logout": "退出登录"
 }

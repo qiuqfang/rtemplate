@@ -1,7 +1,9 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 function Test2() {
-  return <div>测试页面二-2-2</div>;
+  const { t } = useTranslation();
+  return <div>{t("test3_2_2.title")}</div>;
 }
 
 export default memo(Test2);

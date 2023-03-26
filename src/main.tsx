@@ -6,7 +6,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import "@/styles/index.less";
 
-import "./i18n";
+import "./locales/i18n";
 
 (async () => {
   if (process.env.NODE_ENV === "development") {
