@@ -9,9 +9,9 @@
     "build:test": "cross-env MODE=test webpack --config config/webpack.prod.js",
     "build:prod": "cross-env MODE=prod webpack --config config/webpack.prod.js",
     "type-check": "tsc",
-    "lint:format": "prettier --write .",
     "lint:eslint": "eslint . --fix",
-    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:format": "prettier --write .",
+    "lint": "npm run lint:eslint && npm run lint:format",
     "commit": "cz",
     "prepare": "husky install"
   },
@@ -92,8 +92,10 @@
   "private": true,
   "repository": "https://github.com/qiuqfang/rtemplate.git",
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,css,less,scss,sass,styl}": [
-      "eslint --fix",
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.*": [
       "prettier --write"
     ]
   },
