@@ -36,10 +36,7 @@ function NavBar() {
   return (
     <div className="navbar max-sm:px-[10px]">
       <Logo imgSrc="https://www.qiuqfang.top/favicon.svg" />
-      <div
-        className="right_wrapper flex h-full cursor-pointer items-center justify-center gap-2 max-sm:hidden"
-        style={{ fontSize: "24px" }}
-      >
+      <div className="right_wrapper flex h-full cursor-pointer items-center justify-center gap-2 max-sm:hidden">
         <div className="flex" onClick={toggleMode}>
           {isDark ? (
             <Icon icon="material-symbols:light-mode" />
@@ -56,7 +53,6 @@ function NavBar() {
       </div>
       <Icon
         icon="material-symbols:menu-rounded"
-        style={{ fontSize: "24px" }}
         className="hidden max-sm:block"
         onClick={() => {
           switchDisplaySidebar();

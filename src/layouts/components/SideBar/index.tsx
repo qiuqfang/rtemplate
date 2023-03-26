@@ -33,7 +33,6 @@ function SideBar() {
         <MenuRoute width={sideBarState.width} inlineCollapsed={!sideBarState.open} />
         <Icon
           icon="material-symbols:menu-open-rounded"
-          style={{ fontSize: "24px" }}
           className={`absolute bottom-1 cursor-pointer max-sm:hidden ${
             sideBarState.open ? "right-1 rotate-0" : "left-1/2 ml-[-12px] rotate-180"
           }`}
