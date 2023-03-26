@@ -14,23 +14,29 @@ function Login() {
 
   const [loginForm] = Form.useForm();
 
+  const { t } = useTranslation();
+
   const handleLogin = async () => {
-    const loginFields = await loginForm.validateFields().catch((errorInfo) => {
-      console.log(errorInfo);
-    });
-    if (loginFields) {
-      const result = await login(loginFields);
-      if (result.code === 200) {
-        setToken(result.data?.token as string);
-        message.success(result.message);
-        navigate("/");
-      } else {
-        message.error(result.message);
+    if ("dev" === process.env.MODE) {
+      const loginFields = await loginForm.validateFields().catch((errorInfo) => {
+        console.log(errorInfo);
+      });
+      if (loginFields) {
+        const result = await login(loginFields);
+        if (result.code === 200) {
+          setToken(result.data?.token as string);
+          message.success(t("common.loginSuccess") as string);
+          navigate("/");
+        } else {
+          message.error(t("common.loginFail") as string);
+        }
       }
+    } else {
+      setToken(window.crypto.randomUUID());
+      message.success(t("common.loginSuccess") as string);
+      navigate("/");
     }
   };
-
-  const { t } = useTranslation();
 
   return (
     <div className="login-wrapper flex flex-col items-center">

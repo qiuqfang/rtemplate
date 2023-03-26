@@ -3,5 +3,7 @@
   "change_language_btn_en": "英文",
   "change_language_btn_zh": "中文",
   "login": "登录",
+  "loginSuccess": "登录成功",
+  "loginFail": "登录失败",
   "logout": "退出登录"
 }
