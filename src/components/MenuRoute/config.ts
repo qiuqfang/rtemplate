@@ -1,29 +1,30 @@
 import i18n from "@/locales/i18n";
-import { RouteType, RouteInfoValueType, routeInfos } from "@/router";
+import { RouteInfoType, routesInfo } from "@/router";
+import { RouteType } from "~/.routes";
 import { MenuRouteItemType } from "./types";
 
-export const recursionAsyncMenu = (routes: RouteType[]): MenuRouteItemType[] => {
+export const recursionAsyncMenu = (
+  routes: RouteType[],
+  routeListInfo: RouteInfoType[] = routesInfo
+): MenuRouteItemType[] => {
   const accessMenus: MenuRouteItemType[] = [];
 
-  routes.forEach((route: RouteType) => {
-    const accessMenu: MenuRouteItemType = {} as MenuRouteItemType;
-    const children = route.children;
+  routeListInfo.forEach((routeInfo: RouteInfoType) => {
+    if (routeInfo.hidden) return;
+    const route = routes.find((route) => route.path === routeInfo.path);
+    if (routeInfo.id && !route) return;
+    const accessMenu: MenuRouteItemType = {
+      path: routeInfo.path,
+      key: routeInfo.path,
+      label: i18n.t(`menu.${routeInfo.path}`, { defaultValue: routeInfo.title }),
+      title: i18n.t(`menu.${routeInfo.path}`, { defaultValue: routeInfo.title }),
+    } as MenuRouteItemType;
 
-    if (children) {
-      accessMenu.children = recursionAsyncMenu(children);
+    if (routeInfo.children) {
+      accessMenu.children = recursionAsyncMenu(routes, routeInfo.children);
     }
 
-    if (route.path) {
-      const routeInfo: RouteInfoValueType = routeInfos[route.path];
-      if (!routeInfo.hidden) {
-        accessMenu.path = route.path;
-        accessMenu.key = route.path;
-        accessMenu.label = i18n.t(`menu.${route.path}`, { defaultValue: routeInfo.title });
-        accessMenu.title = i18n.t(`menu.${route.path}`, { defaultValue: routeInfo.title });
-        if (accessMenu.children?.length === 0) delete accessMenu.children;
-        accessMenus.push(accessMenu);
-      }
-    }
+    accessMenus.push(accessMenu);
   });
   return accessMenus;
 };

@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, ReactElement } from "react";
-import { routeInfos } from "@/router";
+import { recursionAsyncRoute, RouteInfoType, routesInfo } from "@/router";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "@/store/user";
 
@@ -10,6 +11,18 @@ export type AccessProps = {
 
 // 路由白名单
 export const whiteList = ["/", "/login", "/home"];
+
+let accessRouteInfo: RouteInfoType | undefined;
+
+function foundRouteInfo(routesInfo: RouteInfoType[], pathname: string) {
+  routesInfo.forEach((routeInfo) => {
+    if (routeInfo.path === pathname) {
+      accessRouteInfo = routeInfo;
+    }
+    if (routeInfo.children) accessRouteInfo = foundRouteInfo(routeInfo.children, pathname);
+  });
+  return accessRouteInfo;
+}
 
 export const Access = (props: AccessProps) => {
   const token = useUserStore((state) => state.token);
@@ -37,7 +50,7 @@ export const Access = (props: AccessProps) => {
   const authInterceptor = () => {
     const pathname = location.pathname;
 
-    const routeInfo = routeInfos[pathname];
+    const routeInfo = foundRouteInfo(routesInfo, pathname);
     if (!routeInfo?.id) {
       setAccess(true);
     } else if (menus.includes(routeInfo?.id as never)) {
@@ -50,7 +63,7 @@ export const Access = (props: AccessProps) => {
   // 重定向拦截器
   const redirectInterceptor = () => {
     const pathname = location.pathname.replace(/\/$/, "");
-    const routeInfo = routeInfos[pathname];
+    const routeInfo = foundRouteInfo(routesInfo, pathname);
     if (routeInfo?.redirect) navigate(routeInfo?.redirect, { replace: true });
   };
 
@@ -62,3 +75,25 @@ export const Access = (props: AccessProps) => {
 
   return access ? props.children : props.fallback;
 };
+
+import { RouterView } from "../../.routes/RouterView";
+
+export const AccessRouterView = () => {
+  const { menus } = useUserStore((state) => state);
+
+  const accessRoutes = recursionAsyncRoute(menus);
+
+  return (
+    <Access fallback={<NoPermission />}>
+      <RouterView accessRoutes={accessRoutes} />
+    </Access>
+  );
+};
+
+function NoPermission() {
+  return (
+    <div style={{ textAlign: "center", fontSize: "20px" }}>
+      😣 没有权限哦！请联系管理员获取权限。
+    </div>
+  );
+}
