@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 将css文件
 const ESLintWebpackPlugin = require("eslint-webpack-plugin"); // 用于报告不符合规范的代码
 const { DefinePlugin } = require("webpack");
 
-const { WebpackPluginPages } = require("@qiuqfang/webpack-plugin-pages")
+const { WebpackPluginPages } = require("@qiuqfang/webpack-plugin-pages");
 
 const dotenv = require("dotenv");
 
@@ -175,6 +175,6 @@ module.exports = {
       template: path.resolve(process.cwd(), "public/index.html"), // 打包的 html
       chunks: ["app"], // 对于 entry 配置
     }),
-    new WebpackPluginPages()
+    new WebpackPluginPages(),
   ],
 };

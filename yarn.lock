@@ -824,10 +824,10 @@
     "@qiuqfang/eslint-config-react" latest
     "@qiuqfang/eslint-config-typescript" latest
 
-"@qiuqfang/webpack-plugin-pages@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@qiuqfang/webpack-plugin-pages/-/webpack-plugin-pages-1.0.5.tgz#79b800cf4a399c8d3efef38e8db306782989f966"
-  integrity sha512-dqnkKbjJr54qIapBxyYkofZ7pmpBSEl+cBrFdvIBszTItrj1urrzca6nje2lI7kyx5nLDw8HKI8DgXFQ1T/Kuw==
+"@qiuqfang/webpack-plugin-pages@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@qiuqfang/webpack-plugin-pages/-/webpack-plugin-pages-1.0.6.tgz#d22d6c710a1e0de74ea4c5fd4aaa9c9b36a795cb"
+  integrity sha512-4vRNmURSJxkXY+qkGm2VzclOTXQlPZAi+FLmUFa1RVuYCKvsG55lHa02bGbVFYylcCSXcRzIRxBqfguzrByXjw==
   dependencies:
     chokidar "^3.5.3"
     prettier "^2.8.7"
