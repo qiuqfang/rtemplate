@@ -124,7 +124,7 @@ module.exports = {
           },
           // 解析ts与tsx文件
           {
-            test: /\.(ts|tsx)$/,
+            test: /\.(ts|tsx|js|jsx)$/,
             exclude: /node_modules/,
             use: [
               {
@@ -150,7 +150,7 @@ module.exports = {
     alias: {
       "@": path.resolve(process.cwd(), "src"),
     },
-    extensions: [".js", ".ts", ".tsx", ".json", ".wasm"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".wasm"],
     modules: ["node_modules"],
     symlinks: false, // 减少 npm link 或 yarn link 解析工作量
   },
@@ -161,7 +161,7 @@ module.exports = {
       "process.env": JSON.stringify({ ...env, MODE: process.env.MODE }),
     }),
     new ESLintWebpackPlugin({
-      extensions: [".ts", ".tsx"],
+      extensions: [".ts", ".tsx", ".js", ".jsx"],
       // 开启缓存
       cache: true,
       emitWarning: false,
