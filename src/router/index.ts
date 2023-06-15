@@ -10,6 +10,7 @@ export type RouteInfoType = {
 export const routesInfo: RouteInfoType[] = [
   { path: "/login", title: "登录", hidden: true },
   { path: "/home", title: "首页" },
+  { path: "/styled-components", title: "styled-components" },
   { path: "*", title: "404", hidden: true },
   { path: "/test1", title: "测试页面一", id: 4 },
   {

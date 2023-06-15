@@ -37,6 +37,16 @@ export const routes: RouteType[] = [
     component: _import("/login/index@"),
   },
   {
+    path: "/styled-components",
+    component: Layout,
+    children: [
+      {
+        index: true,
+        component: _import("/styled-components"),
+      },
+    ],
+  },
+  {
     path: "/test1",
     component: Layout,
     children: [
