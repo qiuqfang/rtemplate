@@ -815,10 +815,10 @@
     "@typescript-eslint/eslint-plugin" "^5.40.0"
     "@typescript-eslint/parser" "^5.40.0"
 
-"@qiuqfang/eslint-config@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@qiuqfang/eslint-config/-/eslint-config-0.0.6.tgz#aa319724fb2b6f867c52b599ff1a40d02484cf09"
-  integrity sha512-YZVDMN4dKAEtFoNHhPbn9FIKlbIX8qjA9pe2MX7sIzpdqHEzQMqTArcyq2GKkemIv1GOKI0cojb5eMPY2Kg+tg==
+"@qiuqfang/eslint-config@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@qiuqfang/eslint-config/-/eslint-config-0.0.7.tgz#9753bbe4af0f7232e66b5a8aa2c864506d853e9d"
+  integrity sha512-SvJ7M8ulnV0kulGLTFPfQ/UKLZNqa06Ez5zZwSTh6UqIr1uE4wJVLznvLbM5ifbgD2nRLxCx5Sy8DSoV68oAvA==
   dependencies:
     "@qiuqfang/eslint-config-basic" latest
     "@qiuqfang/eslint-config-react" latest
