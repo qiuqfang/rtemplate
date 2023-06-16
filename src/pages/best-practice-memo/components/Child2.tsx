@@ -7,10 +7,15 @@ type ChildType = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const Child: React.FC<ChildType> = (props) => {
+const Child: React.FC<ChildType> = (props = { value: 1, obj: { a: 1 }, onClick: () => void 0 }) => {
   console.log(`子组件${props.value}`);
 
-  return <Wrapper>子组件{props.value}</Wrapper>;
+  return (
+    <Wrapper>
+      子组件{props.value}
+      {JSON.stringify(props.obj)}
+    </Wrapper>
+  );
 };
 
 export default memo(Child, areEqual);

@@ -9,7 +9,12 @@ type ChildType = {
 const Child: React.FC<ChildType> = (props) => {
   console.log(`子组件${props.value}`);
 
-  return <Wrapper>子组件{props.value}</Wrapper>;
+  return (
+    <Wrapper>
+      子组件{props.value}
+      {JSON.stringify(props.obj)}
+    </Wrapper>
+  );
 };
 
 export default Child;

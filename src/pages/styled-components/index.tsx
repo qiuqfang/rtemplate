@@ -1,15 +1,11 @@
-import { useTranslation } from "react-i18next";
-import { memo } from "react";
 import { MainTitle, TodayRiskNumberWrapper, TodayRiskValueWrapper } from "./styled";
 
 function Home() {
-  const { t } = useTranslation();
-
   return (
     <>
-      <MainTitle>{t("styled_components.title")}</MainTitle>
+      <MainTitle>styled-components</MainTitle>
       <TodayRiskNumberWrapper>
-        <span className="title">{t("styled_components.card_title")}</span>
+        <span className="title"></span>
         <TodayRiskValueWrapper>
           <span className="value">1</span>
           <span className="value">1</span>
@@ -21,4 +17,4 @@ function Home() {
   );
 }
 
-export default memo(Home);
+export default Home;

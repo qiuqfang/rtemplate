@@ -8,7 +8,6 @@ import test2_2 from "./test2_2.json";
 import test3_1 from "./test3_1.json";
 import test3_2_1 from "./test3_2_1.json";
 import test3_2_2 from "./test3_2_2.json";
-import styled_components from "./styled_components.json";
 
 export default {
   common,
@@ -21,5 +20,4 @@ export default {
   test3_1,
   test3_2_1,
   test3_2_2,
-  styled_components,
 };
