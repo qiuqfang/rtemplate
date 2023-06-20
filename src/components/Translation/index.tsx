@@ -5,7 +5,7 @@ import { changeLanguage } from "i18next";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function NavBar() {
+function Translation() {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -39,4 +39,4 @@ function NavBar() {
   );
 }
 
-export default React.memo(NavBar);
+export default React.memo(Translation);
