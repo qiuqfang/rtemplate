@@ -17,7 +17,9 @@ export const TodayRiskNumberWrapper = styled.div`
   align-items: center;
   span.title {
     font-size: 24px;
-    font-family: PingFangSC-Regular, PingFang SC;
+    font-family:
+      PingFangSC-Regular,
+      PingFang SC;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.65);
     line-height: 33px;
@@ -35,7 +37,9 @@ export const TodayRiskValueWrapper = styled.div`
     border-radius: 4px;
 
     font-size: 48px;
-    font-family: PingFangSC-Semibold, PingFang SC;
+    font-family:
+      PingFangSC-Semibold,
+      PingFang SC;
     font-weight: 600;
     color: #ffffff;
     line-height: 62px;
