@@ -92,7 +92,7 @@ export const AccessRouterView = () => {
 
 function NoPermission() {
   return (
-    <div style={{ textAlign: "center", fontSize: "20px" }}>
+    <div className=" flex h-screen items-center justify-center text-center text-base">
       😣 没有权限哦！请联系管理员获取权限。
     </div>
   );
