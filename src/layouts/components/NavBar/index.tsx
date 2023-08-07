@@ -55,9 +55,9 @@ function NavBar() {
       <Icon
         icon="material-symbols:menu-rounded"
         className="hidden max-sm:block"
-        onClick={() => {
+        onClick={useCallback(() => {
           switchDisplaySidebar();
-        }}
+        }, [])}
       />
     </div>
   );
