@@ -22,6 +22,5 @@ const Child: React.FC<ChildType> = (props) => {
 export default memo(Child);
 
 export const Wrapper = styled.div`
-  background-color: yellow;
   margin: 5px 0;
 `;

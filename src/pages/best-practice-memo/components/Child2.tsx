@@ -21,7 +21,6 @@ const Child: React.FC<ChildType> = (props = { value: 1, obj: { a: 1 }, onClick: 
 export default memo(Child, areEqual);
 
 export const Wrapper = styled.div`
-  background-color: yellow;
   margin: 5px 0;
 `;
 
