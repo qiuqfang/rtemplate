@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import "./index.less";
+import { useCallback } from "react";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Login() {
 
   const { t } = useTranslation();
 
-  const handleLogin = async () => {
+  const handleLogin = useCallback(async () => {
     if ("dev" === process.env.MODE) {
       const loginFields = await loginForm.validateFields().catch((errorInfo) => {
         console.log(errorInfo);
@@ -36,7 +37,7 @@ function Login() {
       message.success(t("common.loginSuccess") as string);
       navigate("/");
     }
-  };
+  }, []);
 
   return (
     <div className="login-wrapper flex flex-col items-center">
