@@ -3,7 +3,7 @@ import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { Icon } from "@iconify/react";
 import { Button } from "antd";
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -21,17 +21,18 @@ function NavBar() {
 
   const { t } = useTranslation();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     removeToken();
     navigate("/login");
-  };
+  }, []);
 
-  const toggleMode = () => {
+  const toggleMode = useCallback(() => {
     const theme = isDark ? "" : "dark";
+    console.log(isDark);
     document.documentElement.classList.value = theme;
     localStorage.theme = theme;
     setIsDark(!isDark);
-  };
+  }, [isDark]);
 
   return (
     <div className="navbar max-sm:px-[10px]">
