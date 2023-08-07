@@ -1837,9 +1837,9 @@
     "@qiuqfang/eslint-config-typescript" "*"
 
 "@qiuqfang/webpack-plugin-pages@^1.0.9":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@qiuqfang/webpack-plugin-pages/-/webpack-plugin-pages-1.0.10.tgz#cb914c79702008c9aa55ef1f698dd40850bd3ded"
-  integrity sha512-qKRSD+CAP1regcYu5u0sX6PzMW7WqnFVZHv3S3MAEqKf3MYtWLlweqA35hpEudMuiMulDsVX88Pp75oney4CQw==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@qiuqfang/webpack-plugin-pages/-/webpack-plugin-pages-1.0.11.tgz#6695092940d9893caf458c99de1cedaa56043041"
+  integrity sha512-pGa6ThsUMKfpPai8TlI4Z3ECPsxsjn4tJoZd3fGNhPShJzEJAYKGcCo2Ut4l6d5rGGo0YZ5cvTuABfQ9ygxkUw==
   dependencies:
     chokidar "^3.5.3"
     prettier "^3.0.0"
