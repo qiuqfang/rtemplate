@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect, ReactElement, useMemo } from "react";
 import { recursionAsyncRoute, RouteInfoType, routesInfo } from "@/router";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "@/store/user";
@@ -81,7 +81,7 @@ import { RouterView } from "../../.routes/RouterView";
 export const AccessRouterView = () => {
   const { menus } = useUserStore((state) => state);
 
-  const accessRoutes = recursionAsyncRoute(menus);
+  const accessRoutes = useMemo(() => recursionAsyncRoute(menus), [menus]);
 
   return (
     <Access fallback={<NoPermission />}>
