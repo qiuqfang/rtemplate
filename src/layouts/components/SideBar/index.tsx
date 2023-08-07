@@ -26,7 +26,7 @@ function SideBar() {
       <aside
         className="sidebar relative dark:bg-[#141414] max-sm:absolute max-sm:right-0"
         style={{ width: sideBarState.width }}
-        onClick={useCallback((e) => {
+        onClick={useCallback((e: { stopPropagation: () => void }) => {
           e.stopPropagation();
         }, [])}
       >
