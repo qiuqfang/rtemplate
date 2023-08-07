@@ -3,7 +3,7 @@ import type { MenuProps } from "antd";
 
 import "./index.less";
 import { useLocation, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { recursionAsyncRoute } from "@/router";
 import { useUserStore } from "@/store/user";
 import { MenuRouteProps } from "./types";
@@ -16,9 +16,9 @@ function MenuRoute(props: MenuRouteProps) {
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
   const menus = useUserStore((state) => state.menus);
-  const authRoutes = recursionAsyncRoute(menus);
 
-  const authMenus = recursionAsyncMenu(authRoutes);
+  const authRoutes = useMemo(() => recursionAsyncRoute(menus), [menus]);
+  const authMenus = useMemo(() => recursionAsyncMenu(authRoutes), [authRoutes]);
 
   console.log(authMenus);
 
@@ -39,15 +39,15 @@ function MenuRoute(props: MenuRouteProps) {
     setOpenKeys(result);
   }, [location.pathname]);
 
-  const handleSelect: MenuProps["onSelect"] = (info) => {
+  const handleSelect: MenuProps["onSelect"] = useCallback((info: { key: string }) => {
     console.log(info);
     navigate(info.key);
-  };
+  }, []);
 
-  const handleOpenChange: MenuProps["onOpenChange"] = (openKeys) => {
+  const handleOpenChange: MenuProps["onOpenChange"] = useCallback((openKeys: string[]) => {
     console.log(openKeys);
     setOpenKeys(openKeys);
-  };
+  }, []);
 
   return (
     <div className="menu-wrapper">
