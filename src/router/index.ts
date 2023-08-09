@@ -11,31 +11,34 @@ export const routesInfo: RouteInfoType[] = [
   { path: "/login", title: "登录", hidden: true },
   { path: "/home", title: "首页" },
   { path: "*", title: "404", hidden: true },
-  { path: "/test1", title: "测试页面一", id: 4 },
+  { path: "/test1", title: "测试页面一", id: 1 },
   {
     path: "/test2",
     title: "测试页面二",
     redirect: "/test2/test2_1",
     children: [
-      { path: "/test2/test2_1", title: "页面一", id: 2 },
-      { path: "/test2/test2_2", title: "页面二", id: 3 },
+      { path: "/test2/test2_1", title: "页面一", id: 3 },
+      { path: "/test2/test2_2", title: "页面二", id: 4 },
     ],
+    id: 2,
   },
   {
     path: "/test3",
     title: "测试页面三",
     redirect: "/test3/test3_1",
     children: [
-      { path: "/test3/test3_1", title: "页面一" },
+      { path: "/test3/test3_1", title: "页面一", id: 6 },
       {
         path: "/test3/test3_2",
         title: "页面二",
         children: [
-          { path: "/test3/test3_2/1", title: "页面二-一" },
-          { path: "/test3/test3_2/2", title: "页面二-二" },
+          { path: "/test3/test3_2/1", title: "页面二-一", id: 8 },
+          { path: "/test3/test3_2/2", title: "页面二-二", id: 9 },
         ],
+        id: 7,
       },
     ],
+    id: 5,
   },
   { path: "/styled-components", title: "styled-components" },
 ];

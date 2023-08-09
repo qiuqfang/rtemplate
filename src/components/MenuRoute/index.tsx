@@ -4,7 +4,6 @@ import type { MenuProps } from "antd";
 import "./index.less";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { recursionAsyncRoute } from "@/router";
 import { useUserStore } from "@/store/user";
 import { MenuRouteProps } from "./types";
 import { recursionAsyncMenu } from "./config";
@@ -17,8 +16,7 @@ function MenuRoute(props: MenuRouteProps) {
 
   const menus = useUserStore((state) => state.menus);
 
-  const authRoutes = useMemo(() => recursionAsyncRoute(menus), [menus]);
-  const authMenus = useMemo(() => recursionAsyncMenu(authRoutes), [authRoutes]);
+  const authMenus = useMemo(() => recursionAsyncMenu(menus), [menus]);
 
   console.log(authMenus);
 

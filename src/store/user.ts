@@ -13,7 +13,7 @@ export type UserState = {
 
 export const useUserStore = create<UserState>()((set) => ({
   token: localStorage.getItem("token") || "",
-  menus: [1, 2, 3],
+  menus: [1, 2, 3, 5, 6, 7, 8],
   authorizeList: ["1", "2"],
   accessRoutes: [],
   setAccessRoutes: (accessRoutes: RouteType[]) => {
