@@ -37,7 +37,6 @@ export const routesInfo: RouteInfoType[] = [
       },
     ],
   },
-  { path: "/best-practice-memo", title: "best-practice-memo" },
   { path: "/styled-components", title: "styled-components" },
 ];
 
