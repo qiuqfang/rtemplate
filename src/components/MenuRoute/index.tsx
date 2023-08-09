@@ -7,6 +7,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useUserStore } from "@/store/user";
 import { MenuRouteProps } from "./types";
 import { recursionAsyncMenu } from "./config";
+import { shallow } from "zustand/shallow";
 
 function MenuRoute(props: MenuRouteProps) {
   const { width, inlineCollapsed } = props;
@@ -14,11 +15,9 @@ function MenuRoute(props: MenuRouteProps) {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  const menus = useUserStore((state) => state.menus);
+  const menus = useUserStore((state) => state.menus, shallow);
 
   const authMenus = useMemo(() => recursionAsyncMenu(menus), [menus]);
-
-  console.log(authMenus);
 
   const navigate = useNavigate();
   const location = useLocation();

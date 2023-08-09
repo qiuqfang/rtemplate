@@ -1,5 +1,6 @@
 import { RouteType } from "../../.routes";
 import { create } from "zustand";
+import { immer } from "zustand/middleware/immer";
 
 export type UserState = {
   token: string;
@@ -11,20 +12,28 @@ export type UserState = {
   removeToken: () => void;
 };
 
-export const useUserStore = create<UserState>()((set) => ({
-  token: localStorage.getItem("token") || "",
-  menus: [1, 2, 3, 5, 6, 7, 8],
-  authorizeList: ["1", "2"],
-  accessRoutes: [],
-  setAccessRoutes: (accessRoutes: RouteType[]) => {
-    set((state) => ({ ...state, accessRoutes }));
-  },
-  setToken: (token) => {
-    localStorage.setItem("token", token);
-    set((state) => ({ ...state, token }));
-  },
-  removeToken: () => {
-    localStorage.removeItem("token");
-    set((state) => ({ ...state, token: "" }));
-  },
-}));
+export const useUserStore = create<UserState>()(
+  immer((set) => ({
+    token: localStorage.getItem("token") || "",
+    menus: [1, 2, 3, 5, 6, 7, 8],
+    authorizeList: ["1", "2"],
+    accessRoutes: [],
+    setAccessRoutes: (accessRoutes: RouteType[]) => {
+      set((state: UserState) => {
+        state.accessRoutes = accessRoutes;
+      });
+    },
+    setToken: (token: string) => {
+      localStorage.setItem("token", token);
+      set((state: UserState) => {
+        state.token = token;
+      });
+    },
+    removeToken: () => {
+      localStorage.removeItem("token");
+      set((state: UserState) => {
+        state.token = "";
+      });
+    },
+  }))
+);

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { immer } from "zustand/middleware/immer";
 
 export type AppState = {
   isDark: boolean;
@@ -7,19 +8,21 @@ export type AppState = {
   switchDisplaySidebar: () => void;
 };
 
-export const useAppStore = create<AppState>()((set) => ({
-  isDark:
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
-  setIsDark: (isDark: boolean) => {
-    set((state) => {
-      return { ...state, isDark };
-    });
-  },
-  displaySidebar: false,
-  switchDisplaySidebar: () => {
-    set((state) => {
-      return { ...state, displaySidebar: !state.displaySidebar };
-    });
-  },
-}));
+export const useAppStore = create<AppState>()(
+  immer((set) => ({
+    isDark:
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+    displaySidebar: false,
+    setIsDark: (isDark: boolean) => {
+      set((state) => {
+        state.isDark = isDark;
+      });
+    },
+    switchDisplaySidebar: () => {
+      set((state) => {
+        state.displaySidebar = !state.displaySidebar;
+      });
+    },
+  }))
+);
