@@ -1,7 +1,7 @@
 {
   "name": "rtemplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "🏕 This is a Webpack + React Template",
   "main": "src/main.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,7 @@
   },
   "keywords": [],
   "author": "qiuqfang",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "^5.0.0",
     "@tanstack/react-query": "^4.16.1",
@@ -93,7 +93,10 @@
     "webpack-merge": "^5.8.0"
   },
   "private": true,
-  "repository": "https://github.com/qiuqfang/rtemplate.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiuqfang/rtemplate.git"
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
@@ -109,5 +112,9 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/qiuqfang/rtemplate/issues"
+  },
+  "homepage": "https://github.com/qiuqfang/rtemplate#readme"
 }
