@@ -1,5 +1,5 @@
 import Logo from "@/components/logo";
-import { useAppStore } from "@/store/app";
+import { switchDisplaySidebar, toggleDark, useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { Icon } from "@iconify/react";
 import { Button } from "antd";
@@ -11,9 +11,7 @@ import "./index.less";
 import Translation from "@/components/Translation";
 
 function NavBar() {
-  const { switchDisplaySidebar } = useAppStore();
-
-  const { isDark, setIsDark } = useAppStore((state) => state);
+  const { isDark } = useAppStore((state) => state);
 
   const navigate = useNavigate();
 
@@ -31,7 +29,7 @@ function NavBar() {
     console.log(isDark);
     document.documentElement.classList.value = theme;
     localStorage.theme = theme;
-    setIsDark(!isDark);
+    toggleDark();
   }, [isDark]);
 
   return (

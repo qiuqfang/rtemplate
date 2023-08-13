@@ -4,7 +4,7 @@ import MenuRoute from "@/components/MenuRoute";
 import "./index.less";
 
 import { Icon } from "@iconify/react";
-import { useAppStore } from "@/store/app";
+import { switchDisplaySidebar, useAppStore } from "@/store/app";
 
 function SideBar() {
   const [sideBarState, setSideBarState] = useState({
@@ -12,7 +12,7 @@ function SideBar() {
     open: true,
   });
 
-  const { displaySidebar, switchDisplaySidebar } = useAppStore();
+  const { displaySidebar } = useAppStore();
 
   return (
     <div

@@ -4,8 +4,6 @@ import { immer } from "zustand/middleware/immer";
 export type AppState = {
   isDark: boolean;
   displaySidebar: boolean;
-  setIsDark: (isDark: boolean) => void;
-  switchDisplaySidebar: () => void;
 };
 
 export const useAppStore = create<AppState>()(
@@ -14,16 +12,19 @@ export const useAppStore = create<AppState>()(
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
     displaySidebar: false,
-    obj: { a: 1, b: 2 },
-    setIsDark: (isDark: boolean) => {
-      set((state) => {
-        state.isDark = isDark;
-      });
-    },
-    switchDisplaySidebar: () => {
-      set((state) => {
-        state.displaySidebar = !state.displaySidebar;
-      });
-    },
   }))
 );
+
+export const toggleDark = () => {
+  useAppStore.setState((state) => {
+    state.isDark = !state.isDark;
+  });
+};
+
+export const switchDisplaySidebar = () => {
+  useAppStore.setState((state) => {
+    state.displaySidebar = !state.displaySidebar;
+  });
+};
+
+useAppStore.subscribe(console.log);
