@@ -4,7 +4,7 @@
   "description": "🏕 This is a Webpack + React Template",
   "main": "src/main.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "cross-env MODE=dev webpack serve --config config/webpack.dev.js",
     "build:test": "cross-env MODE=test webpack --config config/webpack.prod.js",
     "build:prod": "cross-env MODE=prod webpack --config config/webpack.prod.js",
