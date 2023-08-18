@@ -6,6 +6,7 @@ import { AccessRouterView } from "./router/Access";
 
 function App() {
   const isDark = useAppStore((state) => state.isDark);
+
   return (
     <>
       <ConfigProvider
