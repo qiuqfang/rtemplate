@@ -26,9 +26,29 @@ function Countdown(props: CountdownProps) {
     setTime(1000);
   }, [count, props]);
 
-  const countRef = useRef(props.count);
+  const callbackRef = useRef<(timer: NodeJS.Timer) => void>();
+
+  callbackRef.current = (timer: NodeJS.Timer) => {
+    if (count <= 0) {
+      setCount(props.count);
+      clearInterval(timer);
+      return;
+    }
+    console.log(count);
+    setCount(count - 1);
+  };
 
   const handleClick2 = useCallback(() => {
+    if (count !== props.count) return;
+    props.callback();
+    const timer: NodeJS.Timer = setInterval(() => {
+      callbackRef.current!(timer);
+    }, 1000);
+  }, [count, props]);
+
+  const countRef = useRef(props.count);
+
+  const handleClick3 = useCallback(() => {
     if (countRef.current !== props.count) return;
     props.callback();
     const timer: NodeJS.Timer = setInterval(() => {
@@ -44,7 +64,7 @@ function Countdown(props: CountdownProps) {
     }, 1000);
   }, [props]);
 
-  return <button onClick={handleClick1}>{count === props.count ? "点击" : count}</button>;
+  return <button onClick={handleClick2}>{count === props.count ? "点击" : count}</button>;
 }
 
 export default memo(Countdown);
