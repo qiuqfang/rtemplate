@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { memo, useCallback, useRef, useState } from "react";
-import { useInterval } from "./useInterval";
 import Countdown from "@/components/Countdown";
 
 function Home() {
