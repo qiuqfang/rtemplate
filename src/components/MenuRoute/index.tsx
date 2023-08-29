@@ -8,6 +8,7 @@ import { useUserStore } from "@/store/user";
 import { MenuRouteProps } from "./types";
 import { recursionAsyncMenu } from "./config";
 import { shallow } from "zustand/shallow";
+import i18n from "@/locales/i18n";
 
 function MenuRoute(props: MenuRouteProps) {
   const { width, inlineCollapsed } = props;
@@ -17,7 +18,8 @@ function MenuRoute(props: MenuRouteProps) {
 
   const menus = useUserStore((state) => state.menus, shallow);
 
-  const authMenus = useMemo(() => recursionAsyncMenu(menus), [menus]);
+  const authMenus = useMemo(() => recursionAsyncMenu(menus), [menus, i18n.language]);
+  console.log(authMenus);
 
   const navigate = useNavigate();
   const location = useLocation();

@@ -4,6 +4,7 @@ import type { MenuProps, MenuItemProps } from "antd";
 import { changeLanguage } from "i18next";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LOCALES } from "@/locales/i18n";
 
 function Translation() {
   const navigate = useNavigate();
@@ -13,22 +14,16 @@ function Translation() {
 
   const handleLanguageMenuItemClick: MenuItemProps["onClick"] = ({ key }) => {
     changeLanguage(key);
-    localStorage.lang = key;
     navigate(location.pathname, { replace: true });
   };
 
-  const languageMenuItems: MenuProps["items"] = [
-    {
-      key: "zh",
-      label: "中文",
-      onClick: handleLanguageMenuItemClick,
+  const languageMenuItems = LOCALES.reduce(
+    (prev, curr) => {
+      prev!.push({ ...curr, onClick: handleLanguageMenuItemClick });
+      return prev;
     },
-    {
-      key: "en",
-      label: "English",
-      onClick: handleLanguageMenuItemClick,
-    },
-  ];
+    [] as MenuProps["items"]
+  );
 
   return (
     <Dropdown menu={{ items: languageMenuItems, selectedKeys }}>

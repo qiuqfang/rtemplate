@@ -4,18 +4,14 @@ import { initReactI18next } from "react-i18next";
 import en from "./en";
 import zh from "./zh";
 
-const resources = {
-  en: {
-    translation: {
-      ...en,
-    },
-  },
-  zh: {
-    translation: {
-      ...zh,
-    },
-  },
-};
+export const LOCALES = [
+  { label: "English", key: "en", res: en },
+  { label: "中文", key: "zh", res: zh },
+];
+
+const resources = LOCALES.reduce((pre, local) => {
+  return { ...pre, [local.key]: { translation: local.res } };
+}, {});
 
 use(initReactI18next);
 
@@ -25,6 +21,10 @@ init({
   interpolation: {
     escapeValue: false,
   },
+});
+
+i18n.on("languageChanged", (lng) => {
+  localStorage.lang = lng;
 });
 
 export default i18n;
