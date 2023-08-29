@@ -6,6 +6,8 @@ const common = require("./webpack.common.js");
 
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin"); // 压缩图片
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin"); // 优化压缩css文件
+const lightningcss = require("lightningcss");
+const browserslist = require("browserslist");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 将css文件提取出来
 
 const CompressionWebpackPlugin = require("compression-webpack-plugin"); // gzip压缩
@@ -23,7 +25,16 @@ module.exports = merge(common, {
   optimization: {
     minimize: true, // 是否执行 minimizer 选项
     minimizer: [
-      new CssMinimizerWebpackPlugin(),
+      new CssMinimizerWebpackPlugin({
+        minify: CssMinimizerWebpackPlugin.lightningCssMinify,
+        minimizerOptions: {
+          targets: lightningcss.browserslistToTargets(
+            browserslist(undefined, {
+              path: path.resolve(process.cwd(), ".browserslistrc"),
+            })
+          ),
+        },
+      }),
       // 无损压缩
       new ImageMinimizerPlugin({
         minimizer: [
