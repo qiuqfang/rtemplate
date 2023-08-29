@@ -28,11 +28,7 @@ module.exports = merge(common, {
       new CssMinimizerWebpackPlugin({
         minify: CssMinimizerWebpackPlugin.lightningCssMinify,
         minimizerOptions: {
-          targets: lightningcss.browserslistToTargets(
-            browserslist(undefined, {
-              path: path.resolve(process.cwd(), ".browserslistrc"),
-            })
-          ),
+          targets: lightningcss.browserslistToTargets(browserslist()),
         },
       }),
       // 无损压缩
