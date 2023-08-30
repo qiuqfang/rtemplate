@@ -26,43 +26,19 @@ function Countdown(props: CountdownProps) {
     setTime(1000);
   }, [count, props]);
 
-  const callbackRef = useRef<(timer: NodeJS.Timer) => void>();
-
-  callbackRef.current = (timer: NodeJS.Timer) => {
-    if (count <= 0) {
-      setCount(props.count);
-      clearInterval(timer);
-      return;
-    }
-    console.log(count);
-    setCount(count - 1);
-  };
-
-  const handleClick2 = useCallback(() => {
+  const handleClick2 = () => {
     if (count !== props.count) return;
     props.callback();
     const timer: NodeJS.Timer = setInterval(() => {
-      callbackRef.current!(timer);
+      setCount((count) => {
+        if (count === 0) {
+          clearInterval(timer);
+          return props.count;
+        }
+        return count - 1;
+      });
     }, 1000);
-  }, [count, props]);
-
-  const countRef = useRef(props.count);
-
-  const handleClick3 = useCallback(() => {
-    if (countRef.current !== props.count) return;
-    props.callback();
-    const timer: NodeJS.Timer = setInterval(() => {
-      if (countRef.current === 0) {
-        countRef.current = props.count;
-        setCount(countRef.current);
-        clearInterval(timer);
-        return;
-      }
-      console.log("countRef", countRef.current);
-      countRef.current -= 1;
-      setCount(countRef.current);
-    }, 1000);
-  }, [props]);
+  };
 
   return <button onClick={handleClick2}>{count === props.count ? "点击" : count}</button>;
 }
